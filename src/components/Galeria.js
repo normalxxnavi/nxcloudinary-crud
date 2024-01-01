@@ -2,7 +2,7 @@
 import { imgUpdate, imgDelete } from '@/lib/actions';
 import { toast } from 'react-hot-toast';
 import Imagen from '@/components/Imagen';
-import Link from 'next/link';
+
 
 
 async function Galeria( {images}) {

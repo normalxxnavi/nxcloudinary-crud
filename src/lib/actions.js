@@ -1,5 +1,4 @@
 'use server'
-// import { v2 as cloudinary } from 'cloudinary';
 import cloudinary from '@/lib/cloudinary'
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
