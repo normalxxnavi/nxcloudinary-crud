@@ -1,4 +1,3 @@
-import Link from "next/link"
 
 function Imagen({ children, img }) {
     return (
