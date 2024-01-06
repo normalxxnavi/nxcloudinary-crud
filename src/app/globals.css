@@ -8,6 +8,10 @@ html, body {
   min-height: 100vh;
 }
 
+html {
+  padding: 30px;
+}
+
 h1 {
   padding: 20px 0;
 }
@@ -18,7 +22,7 @@ button {
 
 .galeria {
   display: flex;
-  gap: 20px;
+  gap: 60px;
   flex-wrap: wrap;
 }
 
