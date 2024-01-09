@@ -38,14 +38,6 @@ export async function imgCreate(formData) {
       crop: "fill",
       gravity: "center"
     })
-      .then((result) => {
-        console.log(result);
-        return result;
-      })
-      .catch((error) => {
-        console.log(error);
-        return error;
-      });
 
     revalidatePath('/');
     return { type: 'success', message: `Imagen subida a ${result.public_id}` }
@@ -79,14 +71,6 @@ export async function imgUpdate(formData) {
       crop: "fill",
       gravity: "center"
     })
-      .then((result) => {
-        console.log(result);
-        return result;
-      })
-      .catch((error) => {
-        console.log(error);
-        return error;
-      });
 
     revalidatePath('/');
     return { type: 'success', message: `Imagen actualizada ${result.public_id}` }
