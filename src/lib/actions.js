@@ -3,7 +3,7 @@ import cloudinary from '@/lib/cloudinary'
 import { revalidatePath } from 'next/cache';
 
 
-export async function getImages() {
+export async function imgRetrieveAll() {
   const result = await cloudinary.api.resources({
     max_results: 500,
     type: 'upload',
@@ -27,32 +27,25 @@ export async function imgCreate(formData) {
   let fileUri = 'data:' + mime + ';' + encoding + ',' + base64Data;
 
   try {
-    const uploadToCloudinary = () => {
-      return new Promise((resolve, reject) => {
-
-        // Transformamos imagen al subirla
-        // width: 600, height: 370, aspect-ratio: 1.62
-        cloudinary.uploader.upload(fileUri, {
-          invalidate: true,
-          folder: "galeria",
-          public_id: file.name,
-          aspect_ratio: "1.62",
-          width: 600,
-          crop: "fill",
-          gravity: "center"
-        })
-          .then((result) => {
-            console.log(result);
-            resolve(result);
-          })
-          .catch((error) => {
-            console.log(error);
-            reject(error);
-          });
+    // Transformamos imagen al subirla
+    // width: 600, height: 370, aspect-ratio: 1.62
+    const result = await cloudinary.uploader.upload(fileUri, {
+      invalidate: true,
+      folder: "galeria",
+      public_id: file.name,
+      aspect_ratio: "1.62",
+      width: 600,
+      crop: "fill",
+      gravity: "center"
+    })
+      .then((result) => {
+        console.log(result);
+        return result;
+      })
+      .catch((error) => {
+        console.log(error);
+        return error;
       });
-    };
-
-    const result = await uploadToCloudinary();
 
     revalidatePath('/');
     return { type: 'success', message: `Imagen subida a ${result.public_id}` }
@@ -75,32 +68,25 @@ export async function imgUpdate(formData) {
   let fileUri = 'data:' + mime + ';' + encoding + ',' + base64Data;
 
   try {
-    const uploadToCloudinary = () => {
-      return new Promise((resolve, reject) => {
-
-        // Transformamos imagen al subirla
-        // width: 600, height: 370, aspect-ratio: 1.62
-        cloudinary.uploader.upload(fileUri, {
-          invalidate: true,
-          // folder: "galeria",
-          public_id,  // public_id ya contiene folder
-          aspect_ratio: "1.62",
-          width: 600,
-          crop: "fill",
-          gravity: "center"
-        })
-          .then((result) => {
-            console.log(result);
-            resolve(result);
-          })
-          .catch((error) => {
-            console.log(error);
-            reject(error);
-          });
+    // Transformamos imagen al subirla
+    // width: 600, height: 370, aspect-ratio: 1.62
+    const result = await cloudinary.uploader.upload(fileUri, {
+      invalidate: true,
+      // folder: "galeria",
+      public_id,  // public_id ya contiene folder
+      aspect_ratio: "1.62",
+      width: 600,
+      crop: "fill",
+      gravity: "center"
+    })
+      .then((result) => {
+        console.log(result);
+        return result;
+      })
+      .catch((error) => {
+        console.log(error);
+        return error;
       });
-    };
-
-    const result = await uploadToCloudinary();
 
     revalidatePath('/');
     return { type: 'success', message: `Imagen actualizada ${result.public_id}` }

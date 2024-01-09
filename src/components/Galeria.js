@@ -27,15 +27,21 @@ async function Galeria({ images }) {
 
   return (
     <>
-      <Imagen>
-        <button formAction={crear} img={undefined}> Subir imagen</button>
+      <Imagen img='image.png'>
+        <input type='file' name='file' accept='image/*' style={{ display: 'none' }} />
+        <input type='hidden' name='public_id' />
+        <br />
+        <button formAction={crear} > Subir imagen</button>
       </Imagen>
       <h1>Galería de imágenes</h1>
       <p>Para actualizar una imagen, arrastra y suelta sobre ella la nueva imagen, y luego pulsa en el botón <strong>Actualizar imagen</strong></p>
       <br />
       <div className='galeria'>
         {images.resources.map(img => (
-          <Imagen key={img.public_id} img={img}>
+          <Imagen key={img.public_id} img={img.secure_url}>
+            <input type='file' name='file' accept='image/*' style={{ display: 'none' }} />
+            <input type='hidden' name='public_id' value={img.public_id} />
+            <br />
             <button formAction={actualizar} > Actualizar imagen</button>
             <button formAction={eliminar} > Eliminar imagen</button>
           </Imagen>

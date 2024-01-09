@@ -1,11 +1,11 @@
 import Galeria from '@/components/Galeria';
-import { getImages } from '@/lib/actions';
+import { imgRetrieveAll } from '@/lib/actions';
 
 export const dynamic = 'force-dynamic'
 
 
 export default async function Home() {
-  const images = await getImages();
+  const images = await imgRetrieveAll();
   console.log(images);
 
   return (
