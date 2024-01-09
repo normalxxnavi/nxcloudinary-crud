@@ -2,16 +2,15 @@
 import cloudinary from '@/lib/cloudinary'
 import { revalidatePath } from 'next/cache';
 
+/*
+OPERACIONES CRUD
 
-export async function imgRetrieveAll() {
-  const result = await cloudinary.api.resources({
-    max_results: 500,
-    type: 'upload',
-    prefix: 'galeria'
-  });
+C: CREATE -> imgCreate
+R: READ   -> imgRetrieveAll
+U: UPDATE -> imgUpdate
+D: DELETE -> imgDelete
 
-  return result;
-}
+*/
 
 
 export async function imgCreate(formData) {
@@ -44,6 +43,17 @@ export async function imgCreate(formData) {
   } catch (error) {
     return { type: 'error', message: error.message }
   }
+}
+
+
+export async function imgRetrieveAll() {
+  const result = await cloudinary.api.resources({
+    max_results: 500,
+    type: 'upload',
+    prefix: 'galeria'
+  });
+
+  return result;
 }
 
 
@@ -95,6 +105,4 @@ export async function imgDelete(formData) {
     console.log(error);
     return { type: 'error', message: error.message }
   }
-
-
 }
