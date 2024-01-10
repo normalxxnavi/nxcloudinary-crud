@@ -31,9 +31,9 @@ async function Galeria({ images }) {
         <input type='file' name='file' accept='image/*' style={{ display: 'none' }} />
         <input type='hidden' name='public_id' />
 
-        <button formAction={crear} > Subir imagen</button>
+        <button formAction={crear}> Subir imagen</button>
       </Imagen>
-      <h1>Galería de imágenes</h1>
+      <h1>Tienda de Bicicletas</h1>
       <p>Para actualizar una imagen, arrastra y suelta sobre ella la nueva imagen, y luego pulsa en el botón <strong>Actualizar imagen</strong></p>
       <br />
       <div className='galeria'>
@@ -42,8 +42,8 @@ async function Galeria({ images }) {
             <input type='file' name='file' accept='image/*' style={{ display: 'none' }} />
             <input type='hidden' name='public_id' value={img.public_id} />
 
-            <button formAction={actualizar} > Actualizar imagen</button>
-            <button formAction={eliminar} > Eliminar imagen</button>
+            <button formAction={actualizar}> Actualizar imagen</button>
+            <button formAction={eliminar}> Eliminar imagen</button>
           </Imagen>
         ))
         }
